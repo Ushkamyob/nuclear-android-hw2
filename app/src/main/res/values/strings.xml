@@ -2,4 +2,5 @@
     <string name="app_name">HW2</string>
     <string name="button_a_b">Open ActivityB</string>
     <string name="button_f_b">Open FragmentB</string>
+    <string name="button_a_c">Open ActivityC</string>
 </resources>
