@@ -13,9 +13,14 @@
         android:theme="@style/Theme.HW2"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_C"
+            android:exported="false"
+            />
+        <activity
             android:name=".Activity_B"
             android:exported="false"
-            android:taskAffinity="com.nuclan2024.hw2.activityB"/>
+            />
+
         <activity
             android:name=".Activity_A"
             android:exported="true">

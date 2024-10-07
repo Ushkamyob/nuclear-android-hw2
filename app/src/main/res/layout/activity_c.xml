@@ -8,24 +8,24 @@
     android:background="@color/teal">
 
     <ImageView
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="2"
-        android:src="@drawable/catmeme"/>
+        android:src="@drawable/_386616594_451764001"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
-        <Button
-            android:id="@+id/open_activity_c"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="32dp"
-            android:text="@string/button_a_c"
-            android:backgroundTint="@color/onyx"
-            android:textColor="@color/white"/>
+    <Button
+        android:id="@+id/open_activity_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/button_a_a"
+        android:backgroundTint="@color/onyx"
+        android:textColor="@color/white"/>
 
 </LinearLayout>
 

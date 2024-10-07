@@ -19,10 +19,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center"
         android:layout_weight="1"
         android:background="@color/red">
+
+        <TextView
+            android:id="@+id/standard_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_a_standard"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/open_activity_b"
