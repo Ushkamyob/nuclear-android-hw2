@@ -18,6 +18,27 @@
     </ImageView>
 
     <LinearLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_a"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_b"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:id="@+id/layout_a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,12 +74,5 @@
             android:backgroundTint="@color/ash_gray"/>
 
     </LinearLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_container"
-        android:background="@color/matte"
-        android:visibility="gone"/>
 </LinearLayout>
 

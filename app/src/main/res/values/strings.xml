@@ -5,4 +5,6 @@
     <string name="button_a_c">Open ActivityC</string>
     <string name="button_a_a">Open ActivityA</string>
     <string name="activity_a_standard">ActivityA was opened! RUN</string>
+    <string name="button_f_bb">Open FragmentBB</string>
+    <string name="button_send_color">Send Color to BA</string>
 </resources>
