@@ -2,6 +2,7 @@ package com.nuclan2024.hw2
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ class FragmentBA : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_ba, container, false)
+        Log.d("a", "FragmentBA created")
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             val openFragmentBBButton: Button = rootView.findViewById(R.id.open_fragment_bb)
             openFragmentBBButton.setOnClickListener {
@@ -34,5 +36,10 @@ class FragmentBA : Fragment() {
         }
 
         return rootView
+    }
+
+    override fun onDestroyView() {
+        Log.d("a", "FragmentBA destroyed")
+        super.onDestroyView()
     }
 }

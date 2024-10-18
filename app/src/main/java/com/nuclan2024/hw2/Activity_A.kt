@@ -15,13 +15,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 
 class Activity_A : AppCompatActivity() {
-    var newIntentCount: Int = 0
+    private var newIntentCount: Int = 0
+    private var isFragmentShown: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_a)
+        Log.d("activityA", supportFragmentManager.backStackEntryCount.toString())
         savedInstanceState?.let {
-            newIntentCount = savedInstanceState.getInt("newIntentCount")
+            newIntentCount = it.getInt("newIntentCount")
+            isFragmentShown = it.getBoolean("isFragmentShown")
+            restartFragmentsOnOrientationChange(isFragmentShown)
+
             if (newIntentCount > 0) setNewIntentText()
         }
     }
@@ -37,27 +42,13 @@ class Activity_A : AppCompatActivity() {
         }
         val openFragmentB = findViewById<Button>(R.id.open_fragment_b)
         openFragmentB.setOnClickListener {
-            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, FragmentBA())
-                    .addToBackStack(null)
-                    .commit()
-                showFragment()
-
-            } else {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container_a, FragmentBA())
-                    .replace(R.id.fragment_container_b, FragmentBB())
-                    .addToBackStack(null)
-                    .commit()
-                showFragment()
-                Log.d("number", supportFragmentManager.backStackEntryCount.toString())
-            }
+            startFragment()
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt("newIntentCount", newIntentCount)
+        outState.putBoolean("isFragmentShown", isFragmentShown)
         super.onSaveInstanceState(outState)
     }
 
@@ -77,12 +68,48 @@ class Activity_A : AppCompatActivity() {
         findViewById<View>(R.id.fragment_container).visibility = View.VISIBLE
         findViewById<ImageView>(R.id.image).visibility = View.GONE
         findViewById<LinearLayout>(R.id.layout_a).visibility = View.GONE
+        isFragmentShown = true
     }
 
     private fun showElements() {
         findViewById<ViewGroup>(R.id.fragment_container).visibility = View.GONE
         findViewById<ImageView>(R.id.image).visibility = View.VISIBLE
         findViewById<LinearLayout>(R.id.layout_a).visibility = View.VISIBLE
+        isFragmentShown = false
+    }
+
+    private fun startFragment() {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            startFragmentPortrait()
+        } else {
+            startFragmentLandscape()
+        }
+    }
+
+    private fun startFragmentPortrait() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, FragmentBA())
+            .addToBackStack(null)
+            .commit()
+        showFragment()
+    }
+
+    private fun startFragmentLandscape() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_a, FragmentBA())
+            .replace(R.id.fragment_container_b, FragmentBB())
+            .addToBackStack(null)
+            .commit()
+        showFragment()
+    }
+
+    private fun restartFragmentsOnOrientationChange(isFragmentShown: Boolean) {
+        if (isFragmentShown) {
+            supportFragmentManager.popBackStack()
+            if (supportFragmentManager.backStackEntryCount == 2) supportFragmentManager.popBackStack()
+            Log.d("restart", supportFragmentManager.backStackEntryCount.toString())
+            startFragment()
+        }
     }
 
 
