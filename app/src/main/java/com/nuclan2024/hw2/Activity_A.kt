@@ -20,6 +20,7 @@ class Activity_A : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        Log.d("activityIdA", taskId.toString())
         setContentView(R.layout.activity_a)
         Log.d("activityA", supportFragmentManager.backStackEntryCount.toString())
         savedInstanceState?.let {
@@ -38,6 +39,7 @@ class Activity_A : AppCompatActivity() {
             val intent = Intent(this, Activity_B::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            //intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
             startActivity(intent)
         }
         val openFragmentB = findViewById<Button>(R.id.open_fragment_b)

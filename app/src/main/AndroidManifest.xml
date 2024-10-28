@@ -15,14 +15,17 @@
         <activity
             android:name=".Activity_C"
             android:exported="false"
+            android:taskAffinity="com.nuclan2024.hw2.B"
             />
         <activity
             android:name=".Activity_B"
             android:exported="false"
+            android:taskAffinity="com.nuclan2024.hw2.B"
             />
 
         <activity
             android:name=".Activity_A"
+            android:taskAffinity="com.nuclan2024.hw2.A"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

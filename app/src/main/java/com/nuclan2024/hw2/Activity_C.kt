@@ -2,6 +2,7 @@ package com.nuclan2024.hw2
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ class Activity_C : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_c)
+        Log.d("activityIdC", taskId.toString())
     }
 
     override fun onStart() {
